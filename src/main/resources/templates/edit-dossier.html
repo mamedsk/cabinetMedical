@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Dossier Medicale</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        background-color: #444;
+        padding: 10px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    .container {
+        padding: 20px;
+    }
+    .card {
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    .card h3 {
+        color: #333;
+    }
+    .card p {
+        color: #666;
+    }
+    .card a {
+        display: block;
+        text-align: center;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .card a:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+<h1>Edit Dossier Medicale</h1>
+<form th:action="@{'/dossiers/update/' + ${dossierMedicale.id}}" method="post">
+    <div>
+        <label for="dateCreation">Date Creation:</label>
+        <input type="date" id="dateCreation" name="dateCreation" th:value="${dossierMedicale.dateCreation}" required>
+    </div>
+    <div>
+        <label for="patient">Patient:</label>
+        <input type="text" id="patient" name="patient.id" th:value="${dossierMedicale.patient.id}" required>
+    </div>
+    <div>
+        <label for="situationFinanciere">Situation Financiere:</label>
+        <input type="text" id="situationFinanciere" name="situationFinanciere.id" th:value="${dossierMedicale.situationFinanciere.id}" required>
+    </div>
+    <div>
+        <label for="statutPaiement">Statut Paiement:</label>
+        <input type="text" id="statutPaiement" name="statutPaiement" th:value="${dossierMedicale.statutPaiement}" required>
+    </div>
+    <div>
+        <label for="dentist">Dentist:</label>
+        <input type="text" id="dentist" name="dentist.id" th:value="${dossierMedicale.dentist.id}" required>
+    </div>
+    <button type="submit">Update</button>
+</form>
+<a href="/dossiers">Back to List</a>
+</body>
+</html>

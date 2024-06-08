@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Dentist</title>
+    <link rel="stylesheet" type="text/css" href="../static/dentist.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 820px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<header>
+    <h1>Add Dentist</h1>
+
+</header>
+<nav>
+    <a href="/" th:href="@{/}">Home</a>
+    <a th:href="@{/dentist}" href="" class="btn">Dentists</a>
+</nav>
+<body>
+<div class="container">
+    <h2>Add Dentist</h2>
+    <form th:action="@{/dentist/save}" method="post">
+        <div>
+            <label>Nom</label>
+            <input type="text" name="nom" th:value="${dentist.nom}">
+
+            <label>Prenom</label>
+            <input type="text" name="prenom" th:value="${dentist.prenom}">
+
+            <label>Age</label>
+            <input type="number" name="age" th:value="${dentist.age}">
+
+            <label>Email</label>
+            <input type="email" name="email" th:value="${dentist.email}">
+
+            <label>Tel</label>
+            <input type="tel" name="telephone" th:value="${dentist.telephone}">
+
+            <label>CIN</label>
+            <input type="text" name="cin" th:value="${dentist.cin}">
+
+            <label>Address</label>
+            <input type="text" name="address" th:value="${dentist.address}">
+
+            <label>Date de RetourConge</label>
+            <input type="date" name="dateRetourConge" th:value="${dentist.dateRetourConge}">
+
+            <label>Nom Utilisateur</label>
+            <input type="text" name="nomUser" th:value="${dentist.nomUser}">
+
+            <label>Salaire de Base</label>
+            <input type="number" name="salaireDeBase" th:value="${dentist.salaireDeBase}">
+
+
+            <label for="specialite">Specialite</label>
+            <select name="specialite" id="specialite">
+                <option th:each="specialite : ${T(ma.cabinet.enums.Specialite).values()}"
+                        th:value="${specialite}"
+                        th:text="${specialite}">
+                </option>
+            </select>
+
+            <label for="assurance">Assurance</label>
+            <select name="assurance" id="assurance">
+                <option th:each="assurance : ${T(ma.cabinet.enums.Assurance).values()}"
+                        th:value="${assurance}"
+                        th:text="${assurance}">
+                </option>
+            </select>
+
+            <label for="statutActuel">Statut Actuel</label>
+            <select name="statutActuel" id="statutActuel">
+                <option th:each="statutActuel : ${T(ma.cabinet.enums.StatusEmploye).values()}"
+                        th:value="${statutActuel}"
+                        th:text="${statutActuel}">
+                </option>
+            </select>
+
+            <select multiple name="selectedDisponibilite" id="disponibilite">
+                <option th:each="day : ${T(java.time.DayOfWeek).values()}"
+                        th:value="${day}"
+                        th:selected="${disponibilite != null and disponibilite.containsKey(day)}"
+                        th:text="${day}">
+                </option>
+            </select>
+
+
+
+
+            <label>Dossier Medicale</label>
+            <input type="number" name="dossierMedicales" th:value="${dentist.dossierMedicales}"/>
+        </div>
+
+        <div>
+            <button type="submit">Save Dentist</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Facture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .card h3 {
+            color: #333;
+        }
+        .card p {
+            color: #666;
+        }
+        .card a {
+            display: block;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<header>
+    <h1>Edit Factures</h1>
+
+</header>
+<nav>
+    <a href="/">Home</a>
+    <a href="/factures">Factures</a>
+</nav>
+<body>
+<div class="container">
+    <h2>Edit Facture</h2>
+    <form action="/factures/update/{id}" method="post">
+        <input type="hidden" name="_method" value="post">
+        <div class="form-group">
+            <label for="montantTotal">Montant Total:</label>
+            <input type="text" id="montantTotal" name="montantTotal">
+        </div>
+        <div class="form-group">
+            <label for="dateFacture">Date Facture:</label>
+            <input type="date" id="dateFacture" name="dateFacture">
+        </div>
+        <div class="form-group">
+            <label for="typePaiement">Type Paiement:</label>
+            <input type="text" id="typePaiement" name="typePaiement">
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+</body>
+</html>

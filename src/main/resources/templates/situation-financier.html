@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Situations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            }
+            header {
+                background-color: #007bff;
+                color: white;
+                padding: 20px;
+                text-align: center;
+            }
+            nav {
+                background-color: #444;
+                padding: 10px;
+                text-align: center;
+            }
+            nav a {
+                color: white;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Situation Financial</h1>
+</header>
+<nav>
+    <a href="/">Home</a>
+    <a href="/situation-financier/form">add Situations Financial</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date Creation</th>
+        <th>Montant Global Paye</th>
+        <th>Montant Global Restant</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="situation : ${situationFinanciers}">
+        <td th:text="${situation.id}"></td>
+        <td th:text="${situation.dateCreation}"></td>
+        <td th:text="${situation.montantGlobalPaye}"></td>
+        <td th:text="${situation.montantGlobalRestant}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

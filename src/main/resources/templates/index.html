@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cabinet Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #7f8c8d;
+        }
+
+        .card a {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+
+        .card a i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Cabinet Management System</h1>
+</header>
+<nav>
+    <a th:href="@{/}"><i class="fas fa-home"></i> Home</a>
+    <a th:href="@{/patient}"><i class="fas fa-user-injured"></i> Patients</a>
+    <a th:href="@{/dentist}"><i class="fas fa-user-md"></i> Dentists</a>
+    <a th:href="@{/factures}"><i class="fas fa-file-invoice-dollar"></i> Factures</a>
+</nav>
+<div class="container">
+    <h2>Welcome to the Cabinet Management System</h2>
+    <p>Use the navigation menu to manage patients, dentists, and factures.</p>
+
+    <div class="card">
+        <h3><i class="fas fa-user-injured"></i> Manage Patients</h3>
+        <p>Add, view, and manage patients.</p>
+        <a th:href="@{/patient}"><i class="fas fa-arrow-circle-right"></i> Go to Patients</a>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-user-md"></i> Manage Dentists</h3>
+        <p>Add, view, and manage dentists.</p>
+        <a th:href="@{/dentist}"><i class="fas fa-arrow-circle-right"></i> Go to Dentists</a>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-file-medical"></i> Manage Dossier medicale</h3>
+        <p>Add, view, and manage dossier medicale.</p>
+        <a th:href="@{/dossiers}"><i class="fas fa-arrow-circle-right"></i> Go to Dossier</a>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-stethoscope"></i> Manage Consultations</h3>
+        <p>Add, view, and manage consultations.</p>
+        <a th:href="@{/consultations}"><i class="fas fa-arrow-circle-right"></i> Go to Consultations</a>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-money-check-alt"></i> Situation Financier</h3>
+        <p>Add, view, and manage Situation Financier.</p>
+        <a th:href="@{/situation-financier}"><i class="fas fa-arrow-circle-right"></i> Situation Financier</a>
+    </div>
+
+    <div class="card">
+        <h3><i class="fas fa-file-invoice-dollar"></i> Manage Factures</h3>
+        <p>Add, view, and manage factures.</p>
+        <a th:href="@{/factures}"><i class="fas fa-arrow-circle-right"></i> Go to Factures</a>
+    </div>
+</div>
+</body>
+</html>

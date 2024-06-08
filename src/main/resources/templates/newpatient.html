@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Patient</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        button {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Add New Patient</h2>
+
+<form action="#" th:action="@{/new}" method="post" th:object="${patient}">
+    <p>First Name: <input type="text" th:field="${patient.nom}"></p>
+    <p>Last Name: <input type="text" th:field="${patient.prenom}"></p>
+    <p>Date of Birth: <input type="date" th:field="${patient.dateNaissance}"></p>
+    <p>Mutuelle:
+        <select th:field="${mutuelle}">
+            <option value="CNOPS">CNOPS</option>
+            <option value="RAMED">RAMED</option>
+            <!-- Add more options as needed -->
+        </select>
+    </p>
+    <p>Blood Group:
+        <select th:field="${groupeSanguin}">
+            <option value="A_POSITIVE">A+</option>
+            <option value="A_NEGATIVE">A-</option>
+            <!-- Add more options as needed -->
+        </select>
+    </p>
+    <select th:field="*{mutuelle}">
+        <option th:each="option : ${mutuelleOptions}" th:value="${option}" th:text="${option}"></option>
+    </select>
+    <button type="submit">Add Patient</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Consultation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #575757;
+    }
+    .container {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 600px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select, button {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Add Consultation</h1>
+</header>
+<nav>
+  <a th:href="@{/}">Home</a>
+  <a th:href="@{/consultations}">Back to Consultations</a>
+</nav>
+<div class="container">
+  <form th:action="@{/consultations/save}" th:object="${consultation}" method="post">
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <label for="dateConsultation">Date:</label>
+    <input type="date" id="dateConsultation" th:field="*{dateConsultation}">
+
+    <label for="typeConsultation">Type:</label>
+    <select id="typeConsultation" th:field="*{typeConsultation}">
+      <option th:each="type : ${T(ma.cabinet.enums.TypeConsultation).values()}" th:value="${type}" th:text="${type}"></option>
+    </select>
+
+    <label for="dossierMedicale">Dossier Medicale ID:</label>
+    <select id="dossierMedicale" name="dossierMedicale">
+      <option th:each="dossier : ${dossiers}" th:value="${dossier.id}" th:text="${dossier.id}"></option>
+    </select>
+
+
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>
